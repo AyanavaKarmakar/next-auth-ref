@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 export const NavbarComponent = () => {
@@ -14,9 +14,13 @@ export const NavbarComponent = () => {
   console.log(data, status);
 
   async function handleLogin() {
-    signIn("github", {
+    await signIn("github", {
       callbackUrl: "http://localhost:3000/dashboard",
     });
+  }
+
+  async function handleLogout() {
+    await signOut({ callbackUrl: "http://localhost:3000/" });
   }
 
   return (
@@ -28,6 +32,9 @@ export const NavbarComponent = () => {
       </div>
       <div className="btn btn-ghost text-xl text-white" onClick={handleLogin}>
         Login
+      </div>
+      <div className="btn btn-ghost text-xl text-white" onClick={handleLogout}>
+        Logout
       </div>
       <div className="dropdown-end dropdown">
         <label tabIndex={0} className="avatar btn btn-ghost btn-circle">
