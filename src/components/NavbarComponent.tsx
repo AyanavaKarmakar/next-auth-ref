@@ -16,8 +16,17 @@ export const NavbarComponent = () => {
   /**
    * ! undefined, 'loading'
    * ! null, 'unauthenticated'
+   * TODO: Remove later
    */
   // console.log(data, status);
+
+  /**
+   * ? Runs when next auth is checking or
+   * ? verfying sessions
+   */
+  if (status === "loading") {
+    return null;
+  }
 
   async function handleLogin() {
     await signIn("github", {
