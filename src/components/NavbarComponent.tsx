@@ -1,9 +1,17 @@
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 
 export const NavbarComponent = () => {
   const AVATAR_IMAGE_SOURCE =
     "https://user-images.githubusercontent.com/89210438/190708630-526de943-f158-4f24-809b-279c58ea70fe.png";
+
+  const { data, status } = useSession();
+
+  /**
+   * ! undefined, 'loading'
+   * ! null, 'unauthenticated'
+   */
+  console.log(data, status);
 
   async function handleLogin() {
     signIn("github", {
