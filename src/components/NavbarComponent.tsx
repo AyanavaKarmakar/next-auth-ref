@@ -11,6 +11,7 @@ export const NavbarComponent = () => {
   const email = data?.user?.email;
   const image = data?.user?.image;
 
+  // TODO: Remove later
   console.log(name, email, image, status);
 
   /**
