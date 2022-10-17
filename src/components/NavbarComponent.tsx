@@ -22,7 +22,13 @@ export const NavbarComponent = () => {
     return null;
   }
 
-  async function handleLogin() {
+  async function handleGoogleLogin() {
+    await signIn("google", {
+      callbackUrl: "http://localhost:3000/dashboard",
+    });
+  }
+
+  async function handleGitHubLogin() {
     await signIn("github", {
       callbackUrl: "http://localhost:3000/dashboard",
     });
@@ -44,11 +50,22 @@ export const NavbarComponent = () => {
           next-auth-ref
         </a>
       </div>
+      {status === "unauthenticated" && (
+        <div
+          className="btn btn-ghost text-xl text-cyan-100"
+          onClick={handleGoogleLogin}
+        >
+          Google Login
+        </div>
+      )}
       <h2 className="text-xl text-white">
         {name !== null && name !== undefined ? name : ""}
       </h2>
       {status === "unauthenticated" && (
-        <div className="btn btn-ghost text-xl text-white" onClick={handleLogin}>
+        <div
+          className="btn btn-ghost text-xl text-white"
+          onClick={handleGitHubLogin}
+        >
           Login
         </div>
       )}
