@@ -24,18 +24,18 @@ export const NavbarComponent = () => {
 
   async function handleGoogleLogin() {
     await signIn("google", {
-      callbackUrl: "http://localhost:3000/dashboard",
+      callbackUrl: "https://next-auth-ref.vercel.app/dashboard",
     });
   }
 
   async function handleGitHubLogin() {
     await signIn("github", {
-      callbackUrl: "http://localhost:3000/dashboard",
+      callbackUrl: "https://next-auth-ref.vercel.app/dashboard",
     });
   }
 
   async function handleLogout() {
-    await signOut({ callbackUrl: "http://localhost:3000/" });
+    await signOut({ callbackUrl: "https://next-auth-ref.vercel.app/" });
   }
 
   return (
