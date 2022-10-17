@@ -2,17 +2,10 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 export const NavbarComponent = () => {
-  const avatarPlaceholder =
-    "https://user-images.githubusercontent.com/89210438/190708630-526de943-f158-4f24-809b-279c58ea70fe.png";
-
   const { data, status } = useSession();
-
   const name = data?.user?.name;
-  const email = data?.user?.email;
   const image = data?.user?.image;
-
-  // TODO: Remove later
-  console.log(name, email, image, status);
+  // const email = data?.user?.email;
 
   /**
    * ! undefined, 'loading'
@@ -67,29 +60,13 @@ export const NavbarComponent = () => {
           Logout
         </div>
       )}
-      <div className="dropdown-end dropdown">
-        <label tabIndex={0} className="avatar btn btn-ghost btn-circle">
+      {image !== null && image !== undefined && (
+        <label className="avatar btn btn-ghost btn-circle">
           <div className="w-10 rounded-full">
-            <Image
-              src={
-                image !== null && image !== undefined
-                  ? image
-                  : avatarPlaceholder
-              }
-              alt="avatar"
-              layout="fill"
-            />
+            <Image src={image} alt="avatar" layout="fill" />
           </div>
         </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-accent p-2 shadow"
-        >
-          <li className="text-white">
-            <a>Logout</a>
-          </li>
-        </ul>
-      </div>
+      )}
     </div>
   );
 };
