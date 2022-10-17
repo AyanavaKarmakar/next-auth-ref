@@ -42,7 +42,12 @@ export const NavbarComponent = () => {
   return (
     <div className="navbar bg-primary">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl normal-case text-white">
+        <a
+          className="btn btn-ghost text-xl normal-case text-white"
+          href="https://github.com/AyanavaKarmakar/next-auth-ref"
+          target="_blank"
+          rel="noreferrer"
+        >
           next-auth-ref
         </a>
       </div>
