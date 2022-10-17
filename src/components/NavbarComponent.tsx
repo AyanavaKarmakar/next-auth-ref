@@ -51,6 +51,9 @@ export const NavbarComponent = () => {
           next-auth-ref
         </a>
       </div>
+      <h2 className="text-xl text-white">
+        {name !== null && name !== undefined ? name : ""}
+      </h2>
       {status === "unauthenticated" && (
         <div className="btn btn-ghost text-xl text-white" onClick={handleLogin}>
           Login
