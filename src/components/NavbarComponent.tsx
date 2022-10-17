@@ -2,16 +2,22 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 export const NavbarComponent = () => {
-  const AVATAR_IMAGE_SOURCE =
+  const avatarPlaceholder =
     "https://user-images.githubusercontent.com/89210438/190708630-526de943-f158-4f24-809b-279c58ea70fe.png";
 
   const { data, status } = useSession();
+
+  const name = data?.user?.name;
+  const email = data?.user?.email;
+  const image = data?.user?.image;
+
+  console.log(name, email, image, status);
 
   /**
    * ! undefined, 'loading'
    * ! null, 'unauthenticated'
    */
-  console.log(data, status);
+  // console.log(data, status);
 
   async function handleLogin() {
     await signIn("github", {
@@ -39,7 +45,15 @@ export const NavbarComponent = () => {
       <div className="dropdown-end dropdown">
         <label tabIndex={0} className="avatar btn btn-ghost btn-circle">
           <div className="w-10 rounded-full">
-            <Image src={AVATAR_IMAGE_SOURCE} alt="avatar" layout="fill" />
+            <Image
+              src={
+                image !== null && image !== undefined
+                  ? image
+                  : avatarPlaceholder
+              }
+              alt="avatar"
+              layout="fill"
+            />
           </div>
         </label>
         <ul
