@@ -4,18 +4,6 @@ import { env } from "../../../env/server.mjs";
 
 export const authOptions: NextAuthOptions = {
   /**
-   * ! Include user.id on session.
-   */
-  // callbacks: {
-  //   session({ session, user }) {
-  //     if (session.user) {
-  //       session.user.id = user.id;
-  //     }
-  //     return session;
-  //   },
-  // },
-
-  /**
    * * Configure one or more authentication providers.
    * ! GitHub returns a field on Account called
    * ! refresh_token_expires_in which is a number.
