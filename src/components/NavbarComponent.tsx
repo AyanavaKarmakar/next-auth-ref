@@ -45,12 +45,19 @@ export const NavbarComponent = () => {
           next-auth-ref
         </a>
       </div>
-      <div className="btn btn-ghost text-xl text-white" onClick={handleLogin}>
-        Login
-      </div>
-      <div className="btn btn-ghost text-xl text-white" onClick={handleLogout}>
-        Logout
-      </div>
+      {status === "unauthenticated" && (
+        <div className="btn btn-ghost text-xl text-white" onClick={handleLogin}>
+          Login
+        </div>
+      )}
+      {status === "authenticated" && (
+        <div
+          className="btn btn-ghost text-xl text-white"
+          onClick={handleLogout}
+        >
+          Logout
+        </div>
+      )}
       <div className="dropdown-end dropdown">
         <label tabIndex={0} className="avatar btn btn-ghost btn-circle">
           <div className="w-10 rounded-full">
