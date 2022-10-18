@@ -3,5 +3,6 @@
 - Next.js
 - TypeScript
 - Next Auth (GitHub + Google)
+- Prisma
 - TailwindCSS
 - daisyUI
