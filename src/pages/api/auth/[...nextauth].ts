@@ -1,9 +1,15 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "../../../lib/prismadb";
 import { env } from "../../../env/server.mjs";
 
 export const authOptions: NextAuthOptions = {
+  /**
+   * @see https://next-auth.js.org/adapters/prisma
+   */
+  adapter: PrismaAdapter(prisma),
   /**
    * * Configure one or more authentication providers.
    * ! GitHub returns a field on Account called
